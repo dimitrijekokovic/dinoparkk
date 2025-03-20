@@ -3,18 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
-import { LanguageContext } from "../context/LanguageContext";
+import { LanguageContext } from "../layout"; // Import LanguageContext
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLocationDot,
-  faEnvelope,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faInstagram,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   const { language } = useContext(LanguageContext); // Dobijamo jezik iz globalnog konteksta
@@ -46,10 +38,7 @@ const Footer = () => {
               { sr: "Aktivnosti", en: "Activities", id: "activities" },
             ].map((item, index) => (
               <li key={index}>
-                <Link
-                  href={`#${item.id}`}
-                  className="hover:text-green-400 transition"
-                >
+                <Link href={`#${item.id}`} className="hover:text-green-400 transition">
                   {language === "sr" ? item.sr : item.en}
                 </Link>
               </li>
@@ -64,26 +53,15 @@ const Footer = () => {
           </h3>
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-center space-x-3">
-              <FontAwesomeIcon
-                icon={faLocationDot}
-                className="text-green-400 text-lg"
-              />
-              <span>
-                {language === "sr" ? "Zlatibor, Srbija" : "Zlatibor, Serbia"}
-              </span>
+              <FontAwesomeIcon icon={faLocationDot} className="text-green-400 text-lg" />
+              <span>{language === "sr" ? "Zlatibor, Srbija" : "Zlatibor, Serbia"}</span>
             </li>
             <li className="flex items-center space-x-3">
-              <FontAwesomeIcon
-                icon={faPhone}
-                className="text-green-400 text-lg"
-              />
+              <FontAwesomeIcon icon={faPhone} className="text-green-400 text-lg" />
               <span>+381 60 123 4567</span>
             </li>
             <li className="flex items-center space-x-3">
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                className="text-green-400 text-lg"
-              />
+              <FontAwesomeIcon icon={faEnvelope} className="text-green-400 text-lg" />
               <span>info@dinopark.rs</span>
             </li>
           </ul>

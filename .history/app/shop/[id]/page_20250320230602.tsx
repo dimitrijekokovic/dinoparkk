@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 
 // Definišemo tip podataka za proizvod
 type Product = {
@@ -14,16 +13,13 @@ type Product = {
   imageUrl: string;
 };
 
-const ProductPage = () => {
-  const params = useParams(); // Umesto destructuring props, koristimo useParams()
+const ProductPage = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!params.id) return; // Ako ID nije dostupan, prekini funkciju
-
     const fetchProduct = async () => {
       try {
         const response = await fetch(
@@ -87,12 +83,8 @@ const ProductPage = () => {
 
             {/* Detalji o proizvodu */}
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
-                {product.name}
-              </h1>
-              <p className="text-gray-600 text-lg mt-4">
-                {product.description}
-              </p>
+              <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
+              <p className="text-gray-600 text-lg mt-4">{product.description}</p>
               <p className="text-green-500 text-2xl font-bold mt-6">
                 {product.price} RSD
               </p>

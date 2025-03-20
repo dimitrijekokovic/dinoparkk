@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { LanguageContext } from "../context/LanguageContext"; // ✅ Tačno!
+import { LanguageContext } from "../context/LanguageContext";
 import { motion } from "framer-motion";
 import Image from "next/image";
 

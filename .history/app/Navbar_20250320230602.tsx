@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { LanguageContext } from "./context/LanguageContext"; // ✅ Tačno!
+import { LanguageContext } from "./layout"; // Uvoz konteksta jezika
 
 const Navbar = () => {
   const { language, setLanguage } = useContext(LanguageContext); // Dobijamo globalni jezik

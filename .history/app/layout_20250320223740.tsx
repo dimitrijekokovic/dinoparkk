@@ -1,20 +1,29 @@
 "use client";
 
 import type { Metadata } from "next";
+import { createContext, useState } from "react";
 import "./globals.css";
 import Navbar from "./Navbar";
-import { LanguageProvider } from "./context/LanguageContext"; // Novi import ✅
+
+// Kreiramo globalni kontekst jezika
+export const LanguageContext = createContext<{
+  language: string;
+  setLanguage: (lang: string) => void;
+}>({
+  language: "sr",
+  setLanguage: () => {},
+});
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [language, setLanguage] = useState("sr"); // Po defaultu je srpski
+
   return (
-    <LanguageProvider>
-      {" "}
-      {/* Omotaj sve u LanguageProvider */}
-      <html lang="sr" className="overflow-x-hidden">
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      <html lang={language} className="overflow-x-hidden">
         <body
           suppressHydrationWarning={true}
           className="bg-gray-100 text-gray-900 overflow-x-hidden"
@@ -25,6 +34,6 @@ export default function RootLayout({
           </main>
         </body>
       </html>
-    </LanguageProvider>
+    </LanguageContext.Provider>
   );
 }

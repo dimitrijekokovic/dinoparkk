@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { LanguageContext } from "../context/LanguageContext"; // ✅ Tačno!
+import { LanguageContext } from "../layout"; // Import LanguageContext
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -9,10 +9,10 @@ const About = () => {
   const { language } = useContext(LanguageContext); // Dobijamo jezik iz globalnog konteksta
 
   return (
-    <section
-      id="about"
-      className="relative bg-black text-white overflow-visible py-20"
-    >
+    <section id="about" className="relative bg-black text-white overflow-visible py-20">
+      
+      
+
       <div className="max-w-7xl mx-auto px-6 lg:flex lg:items-center relative z-10">
         {/* Tekst sa animacijom */}
         <motion.div
@@ -41,6 +41,7 @@ const About = () => {
           viewport={{ once: true }}
         >
           <div className="relative w-full max-w-lg">
+           
             {/* Pseudo-element za dodatni svetlosni efekat */}
             <div className="absolute -inset-10 bg-green-500 blur-[40px] opacity-50 rounded-lg z-0"></div>
 

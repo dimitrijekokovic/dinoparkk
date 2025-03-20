@@ -1,24 +1,16 @@
 "use client";
 
 import { useContext } from "react";
-import { LanguageContext } from "../context/LanguageContext";
+import { LanguageContext } from "../layout"; // Import LanguageContext
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLocationDot,
-  faPhone,
-  faEnvelope,
-  faClock,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faPhone, faEnvelope, faClock } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 const Contact = () => {
   const { language } = useContext(LanguageContext);
 
   return (
-    <section
-      id="contact"
-      className="relative bg-black text-white overflow-visible py-20"
-    >
+    <section id="contact" className="relative bg-black text-white overflow-visible py-20">
       {/* Glow efekat između sekcija */}
       <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-[80%] h-32 bg-green-500 blur-3xl opacity-50 z-0"></div>
 
@@ -68,31 +60,19 @@ const Contact = () => {
 
           <ul className="mt-6 space-y-4 text-lg">
             <li className="flex items-center space-x-3">
-              <FontAwesomeIcon
-                icon={faLocationDot}
-                className="text-green-400 text-2xl"
-              />
+              <FontAwesomeIcon icon={faLocationDot} className="text-green-400 text-2xl" />
               <span>Zlatibor, Srbija</span>
             </li>
             <li className="flex items-center space-x-3">
-              <FontAwesomeIcon
-                icon={faPhone}
-                className="text-green-400 text-2xl"
-              />
+              <FontAwesomeIcon icon={faPhone} className="text-green-400 text-2xl" />
               <span>+381 60 123 4567</span>
             </li>
             <li className="flex items-center space-x-3">
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                className="text-green-400 text-2xl"
-              />
+              <FontAwesomeIcon icon={faEnvelope} className="text-green-400 text-2xl" />
               <span>info@dinopark.rs</span>
             </li>
             <li className="flex items-center space-x-3">
-              <FontAwesomeIcon
-                icon={faClock}
-                className="text-green-400 text-2xl"
-              />
+              <FontAwesomeIcon icon={faClock} className="text-green-400 text-2xl" />
               <span>
                 {language === "sr"
                   ? "Radno vreme: 10:00 - 18:00 (Svaki dan)"
