@@ -2,14 +2,15 @@
 
 import { useEffect, useState, useContext } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { LanguageContext } from "./context/LanguageContext"; // ✅ Tačno!
+import { LanguageContext } from "./context/LanguageContext";
 
 const Navbar = () => {
-  const { language, setLanguage } = useContext(LanguageContext); // Dobijamo globalni jezik
+  const { language, setLanguage } = useContext(LanguageContext);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +20,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Dodajemo `overflow-hidden` na <body> kada je meni otvoren
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
@@ -27,6 +27,19 @@ const Navbar = () => {
   const changeLanguage = () => {
     setLanguage(language === "sr" ? "en" : "sr");
   };
+
+  const navigateTo = (href: string) => {
+    router.push(href);
+    setMenuOpen(false);
+  };
+
+  const links = [
+    { nameSr: "Početna", nameEn: "Home", href: "/#home" },
+    { nameSr: "Shop", nameEn: "Shop", href: "/shop" },
+    { nameSr: "Kontakt", nameEn: "Contact", href: "/#contact" },
+    { nameSr: "Galerija", nameEn: "Gallery", href: "/gallery" },
+    { nameSr: "Aktivnosti", nameEn: "Activities", href: "/#activities" },
+  ];
 
   return (
     <header
@@ -36,63 +49,45 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
         {/* Logo */}
-        <Link href="#home">
-          <Image
-            src="/logo.png"
-            alt="DinoPark Logo"
-            width={60}
-            height={30}
-            className="cursor-pointer transform transition duration-300 hover:scale-110"
-          />
-        </Link>
+        <Image
+          src="/logo.png"
+          alt="DinoPark Logo"
+          width={60}
+          height={30}
+          className="cursor-pointer transform transition duration-300 hover:scale-110"
+          onClick={() => navigateTo("/#home")}
+        />
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-8 text-white font-semibold text-lg ml-auto">
-          {[
-            { name: "O nama", id: "about" },
-            { name: "Galerija", id: "gallery" },
-            { name: "Kontakt", id: "contact" },
-            { name: "Aktivnosti", id: "activities" },
-          ].map((item, index) => (
-            <a
+          {links.map((item, index) => (
+            <button
               key={index}
-              href={`#${item.id}`}
+              onClick={() => navigateTo(item.href)}
               className="relative group overflow-hidden"
             >
               <span className="group-hover:text-green-400 transition">
-                {language === "sr"
-                  ? item.name
-                  : ["About", "Gallery", "Contact", "Activities"][index]}
+                {language === "sr" ? item.nameSr : item.nameEn}
               </span>
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </a>
+            </button>
           ))}
         </nav>
 
-        {/* Language Toggle (samo za desktop) */}
+        {/* Language Toggle (desktop) */}
         <div className="hidden md:flex ml-6 space-x-4">
           <button onClick={changeLanguage}>
-            {language === "sr" ? (
-              <Image
-                src="/uk-flag.png"
-                alt="EN"
-                width={30}
-                height={20}
-                className="rounded shadow-md hover:opacity-80 transition"
-              />
-            ) : (
-              <Image
-                src="/serbia-flag.png"
-                alt="SR"
-                width={30}
-                height={20}
-                className="rounded shadow-md hover:opacity-80 transition"
-              />
-            )}
+            <Image
+              src={language === "sr" ? "/uk-flag.png" : "/serbia-flag.png"}
+              alt={language === "sr" ? "EN" : "SR"}
+              width={30}
+              height={20}
+              className="rounded shadow-md hover:opacity-80 transition"
+            />
           </button>
         </div>
 
-        {/* Mobile Menu Button (burger dugme) */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-white text-3xl z-100"
@@ -109,43 +104,24 @@ const Navbar = () => {
           exit={{ opacity: 0 }}
           className="fixed top-0 left-0 w-full h-screen bg-black text-white flex flex-col items-center justify-center space-y-6 z-50 md:hidden"
         >
-          {[
-            { name: "O nama", id: "about" },
-            { name: "Galerija", id: "gallery" },
-            { name: "Kontakt", id: "contact" },
-            { name: "Aktivnosti", id: "activities" },
-          ].map((item, index) => (
-            <a
+          {links.map((item, index) => (
+            <button
               key={index}
-              href={`#${item.id}`}
+              onClick={() => navigateTo(item.href)}
               className="text-xl hover:text-green-400 transition"
-              onClick={() => setMenuOpen(false)} // Zatvori meni nakon klika
             >
-              {language === "sr"
-                ? item.name
-                : ["About", "Gallery", "Contact", "Activities"][index]}
-            </a>
+              {language === "sr" ? item.nameSr : item.nameEn}
+            </button>
           ))}
 
-          {/* Language Toggle u mobilnom meniju */}
           <button onClick={changeLanguage} className="mt-4">
-            {language === "sr" ? (
-              <Image
-                src="/uk-flag.png"
-                alt="EN"
-                width={30}
-                height={20}
-                className="rounded shadow-md hover:opacity-80 transition"
-              />
-            ) : (
-              <Image
-                src="/serbia-flag.png"
-                alt="SR"
-                width={30}
-                height={20}
-                className="rounded shadow-md hover:opacity-80 transition"
-              />
-            )}
+            <Image
+              src={language === "sr" ? "/uk-flag.png" : "/serbia-flag.png"}
+              alt={language === "sr" ? "EN" : "SR"}
+              width={30}
+              height={20}
+              className="rounded shadow-md hover:opacity-80 transition"
+            />
           </button>
         </motion.div>
       )}
