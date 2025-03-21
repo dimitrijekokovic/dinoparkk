@@ -42,6 +42,19 @@ const ShopPage = () => {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    const updateCartCount = () => {
+      const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+      setCartCount(storedCart.length);
+    };
+
+    window.addEventListener("cartUpdated", updateCartCount);
+
+    return () => {
+      window.removeEventListener("cartUpdated", updateCartCount);
+    };
+  }, []);
+
   const addToCart = (product: Product) => {
     let cart = JSON.parse(localStorage.getItem("cart") || "[]");
     cart.push(product);

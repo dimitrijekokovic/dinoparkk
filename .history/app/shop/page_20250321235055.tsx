@@ -42,14 +42,9 @@ const ShopPage = () => {
     fetchProducts();
   }, []);
 
+  // Funkcija za dodavanje u korpu (može se kasnije proširiti)
   const addToCart = (product: Product) => {
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(product);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Ažuriramo prikaz broja u korpi
-    const event = new Event("cartUpdated");
-    window.dispatchEvent(event);
+    console.log("Dodato u korpu:", product);
   };
 
   return (
@@ -76,10 +71,7 @@ const ShopPage = () => {
                 className="cursor-pointer bg-gray-100 rounded-lg shadow-lg hover:shadow-2xl transition overflow-hidden relative"
               >
                 {/* Slika zauzima 100% širine kartice, bez paddinga */}
-                <div
-                  className="relative w-full h-64"
-                  onClick={() => router.push(`/shop/${product.id}`)}
-                >
+                <div className="relative w-full h-64" onClick={() => router.push(`/shop/${product.id}`)}>
                   <Image
                     src={product.imageUrl}
                     alt={product.name}

@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import CartIcon from "./components/CartIcon";
-import { FaShoppingCart } from "react-icons/fa"; // Dodata ikonica korpe
+import CartIcon from "@/components/CartIcon";
 
 // Definišemo tip podataka za proizvod
 type Product = {
@@ -42,16 +41,6 @@ const ShopPage = () => {
     fetchProducts();
   }, []);
 
-  const addToCart = (product: Product) => {
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(product);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Ažuriramo prikaz broja u korpi
-    const event = new Event("cartUpdated");
-    window.dispatchEvent(event);
-  };
-
   return (
     <section className="bg-white min-h-screen py-20 px-6 mt-24">
       <div className="max-w-7xl mx-auto">
@@ -73,13 +62,11 @@ const ShopPage = () => {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="cursor-pointer bg-gray-100 rounded-lg shadow-lg hover:shadow-2xl transition overflow-hidden relative"
+                onClick={() => router.push(`/shop/${product.id}`)} // Klik vodi na pojedinačnu stranicu
+                className="cursor-pointer bg-gray-100 rounded-lg shadow-lg hover:shadow-2xl transition overflow-hidden"
               >
                 {/* Slika zauzima 100% širine kartice, bez paddinga */}
-                <div
-                  className="relative w-full h-64"
-                  onClick={() => router.push(`/shop/${product.id}`)}
-                >
+                <div className="relative w-full h-64">
                   <Image
                     src={product.imageUrl}
                     alt={product.name}
@@ -90,21 +77,13 @@ const ShopPage = () => {
                 </div>
 
                 {/* Tekstualni deo kartice */}
-                <div className="p-4 flex justify-between items-center">
-                  <div>
-                    <h2 className="text-xl font-semibold text-gray-900">
-                      {product.name}
-                    </h2>
-                    <p className="text-gray-600 font-bold text-lg mt-2">
-                      {product.price},00 RSD
-                    </p>
-                  </div>
-                  <button
-                    className="text-gray-700 hover:text-gray-900 text-xl"
-                    onClick={() => addToCart(product)}
-                  >
-                    <FaShoppingCart />
-                  </button>
+                <div className="p-4">
+                  <h2 className="text-xl font-semibold text-gray-900">
+                    {product.name}
+                  </h2>
+                  <p className="text-gray-600 font-bold text-lg mt-2">
+                    {product.price} RSD
+                  </p>
                 </div>
               </div>
             ))}
