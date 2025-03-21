@@ -3,6 +3,7 @@ import About from "./components/About";
 import Gallery from "./components/Gallery"; 
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Activities from "./components/Activities";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <About />
       <Contact />
       <Gallery /> 
+      <Activities/>
       <Footer />
     </main>
   );
