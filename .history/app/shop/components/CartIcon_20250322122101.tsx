@@ -1,25 +1,31 @@
 "use client";
+
 import { FaShoppingCart } from "react-icons/fa";
-import { useState, useEffect } from "react";
-import clsx from "clsx";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import clsx from "clsx"; // ako ne koristiš, možeš i bez ovog
 
 const CartIcon = () => {
+  const router = useRouter();
   const [cartCount, setCartCount] = useState(0);
   const [animate, setAnimate] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     const updateCartCount = () => {
       const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
       setCartCount(storedCart.length);
+
+      // Pokreni animaciju
       setAnimate(true);
-      setTimeout(() => setAnimate(false), 500);
+      setTimeout(() => setAnimate(false), 500); // traje 0.5s
     };
 
     updateCartCount();
     window.addEventListener("cartUpdated", updateCartCount);
-    return () => window.removeEventListener("cartUpdated", updateCartCount);
+
+    return () => {
+      window.removeEventListener("cartUpdated", updateCartCount);
+    };
   }, []);
 
   return (
