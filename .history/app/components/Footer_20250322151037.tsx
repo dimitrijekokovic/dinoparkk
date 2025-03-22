@@ -91,18 +91,12 @@ const Footer = () => {
           {/* Društvene mreže */}
           <div className="mt-6 flex space-x-5">
             {[
-              {
-                icon: faFacebook,
-                url: "https://www.facebook.com/dinoparkzlatibor/?locale=sr_RS",
-              },
+              { icon: faFacebook, url: "https://facebook.com" },
               {
                 icon: faInstagram,
                 url: "https://www.instagram.com/dinoparkzlatibor/",
               },
-              {
-                icon: faYoutube,
-                url: "https://www.youtube.com/@dinoparkzlatibor2324",
-              },
+              { icon: faYoutube, url: "https://youtube.com" },
             ].map((social, index) => (
               <Link key={index} href={social.url} target="_blank">
                 <FontAwesomeIcon
