@@ -3,17 +3,24 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./Navbar";
-import { LanguageProvider } from "./context/LanguageContext"; // Novi import ✅
+import { LanguageProvider } from "./context/LanguageContext";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // Resetuj scroll na vrh kad se promeni ruta
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <LanguageProvider>
-      {" "}
-      {/* Omotaj sve u LanguageProvider */}
       <html lang="sr" className="overflow-x-hidden">
         <body
           suppressHydrationWarning={true}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import ProductList from "../components/ProductList"; 
 
 // Definišemo tip podataka za proizvod
 type Product = {
@@ -108,6 +109,17 @@ const ProductPage = () => {
           </div>
         )}
       </div>
+
+      {product && (
+  <div className="mt-20">
+    <h2 className="text-2xl font-bold mb-6 text-gray-800">Slični proizvodi</h2>
+    <ProductList
+      page={1}
+      onPageChange={() => {}}
+      query={product.name.slice(-1)} // Uzima poslednje slovo naslova
+    />
+  </div>
+)}
     </section>
   );
 };

@@ -1,116 +1,48 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useState } from "react";
+import ProductList from "./components/ProductList";
 import CartIcon from "./components/CartIcon";
-import { FaShoppingCart } from "react-icons/fa"; // Dodata ikonica korpe
-
-// Definišemo tip podataka za proizvod
-type Product = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  imageUrl: string;
-};
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const ShopPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const router = useRouter(); // Koristimo `useRouter` za navigaciju
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(
-          "https://dinoparkwebshop-backend-1081514700612.us-central1.run.app/api/Product"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-        const data: Product[] = await response.json();
-        setProducts(data);
-      } catch (err) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  const addToCart = (product: Product) => {
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(product);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Ažuriramo prikaz broja u korpi
-    const event = new Event("cartUpdated");
-    window.dispatchEvent(event);
-  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [query, setQuery] = useState("");
 
   return (
     <section className="bg-white min-h-screen py-20 px-6 mt-24">
       <div className="max-w-7xl mx-auto">
-        {/* Prikaz učitavanja */}
-        {loading && (
-          <p className="text-center text-lg text-gray-600">Učitavanje...</p>
-        )}
+        <h1 className="text-3xl font-bold mb-8 text-center">Prodavnica</h1>
 
-        {/* Prikaz greške */}
-        {error && (
-          <p className="text-center text-lg text-red-500">
-            Greška pri učitavanju proizvoda. Pokušajte ponovo kasnije.
-          </p>
-        )}
-
-        {/* Grid layout za prikaz proizvoda */}
-        {!loading && !error && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="cursor-pointer bg-gray-100 rounded-lg shadow-lg hover:shadow-2xl transition overflow-hidden relative"
-              >
-                {/* Slika zauzima 100% širine kartice, bez paddinga */}
-                <div
-                  className="relative w-full h-64"
-                  onClick={() => router.push(`/shop/${product.id}`)}
-                >
-                  <Image
-                    src={product.imageUrl}
-                    alt={product.name}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-t-lg"
-                  />
-                </div>
-
-                {/* Tekstualni deo kartice */}
-                <div className="p-4 flex justify-between items-center">
-                  <div>
-                    <h2 className="text-xl font-semibold text-gray-900">
-                      {product.name}
-                    </h2>
-                    <p className="text-gray-600 font-bold text-lg mt-2">
-                      {product.price},00 RSD
-                    </p>
-                  </div>
-                  <button
-                    className="text-gray-700 hover:text-gray-900 text-xl"
-                    onClick={() => addToCart(product)}
-                  >
-                    <FaShoppingCart />
-                  </button>
-                </div>
-              </div>
-            ))}
+        {/* Search bar */}
+        <div className="mb-8 flex justify-center">
+          <div className="relative w-full max-w-md">
+            <input
+              type="text"
+              placeholder="Pretraži proizvode..."
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setCurrentPage(1); // Resetuje na prvu stranu prilikom nove pretrage
+              }}
+              className="w-full border border-gray-300 rounded-full py-2 px-5 pr-12 focus:outline-none focus:ring-2 focus:ring-green-400"
+            />
+            <FontAwesomeIcon
+              icon={faSearch}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+            />
           </div>
-        )}
+        </div>
+
+        {/* Lista proizvoda */}
+        <ProductList
+          page={currentPage}
+          onPageChange={setCurrentPage}
+          query={query}
+        />
       </div>
+
       <CartIcon />
     </section>
   );
