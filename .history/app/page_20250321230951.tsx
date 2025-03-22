@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Gallery from "./components/Gallery";
+import Gallery from "./components/Gallery"; 
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Activities from "./components/Activities";
@@ -11,8 +11,9 @@ export default function Home() {
       <Hero />
       <About />
       <Contact />
-      <Gallery />
-      <Activities />
+      <Gallery /> 
+      <Activities/>
+      <Footer />
     </main>
   );
 }
