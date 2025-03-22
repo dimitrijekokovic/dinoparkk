@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import { debounce } from "lodash";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaShoppingCart } from "react-icons/fa";
@@ -30,25 +31,33 @@ const ProductList = ({ page, onPageChange, query }: ProductListProps) => {
 
   const pageSize = 30;
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(
-          `https://dinoparkwebshop-backend-1081514700612.us-central1.run.app/api/Product/search?query=${encodeURIComponent(query)}&page=${page}&pageSize=${pageSize}`
-        );
-        const data = await res.json();
-        setProducts(data.products);
-        setTotalPages(data.totalPages);
-      } catch (err) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchProducts = async (q: string) => {
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `https://dinoparkwebshop-backend-1081514700612.us-central1.run.app/api/Product/search?query=${encodeURIComponent(
+          q
+        )}&page=${page}&pageSize=${pageSize}`
+      );
+      const data = await res.json();
+      setProducts(data.products);
+      setTotalPages(data.totalPages);
+    } catch (err) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchProducts();
-  }, [page, query]);
+  const debouncedFetch = useMemo(() => debounce(fetchProducts, 300), [page]);
+
+  useEffect(() => {
+    debouncedFetch(query);
+
+    return () => {
+      debouncedFetch.cancel();
+    };
+  }, [query, debouncedFetch]);
 
   const addToCart = (product: Product) => {
     let cart = JSON.parse(localStorage.getItem("cart") || "[]");
