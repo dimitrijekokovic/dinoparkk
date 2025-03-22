@@ -50,12 +50,12 @@ const CartPage = () => {
     const form = e.target as HTMLFormElement;
 
     const data: FormData = {
-      name: (form.elements.namedItem("name") as HTMLInputElement).value,
-      address: (form.elements.namedItem("address") as HTMLInputElement).value,
-      city: (form.elements.namedItem("city") as HTMLInputElement).value,
-      postal: (form.elements.namedItem("postal") as HTMLInputElement).value,
-      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
-      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      name: (form.name as HTMLInputElement).value,
+      address: (form.address as HTMLInputElement).value,
+      city: (form.city as HTMLInputElement).value,
+      postal: (form.postal as HTMLInputElement).value,
+      phone: (form.phone as HTMLInputElement).value,
+      email: (form.email as HTMLInputElement).value,
     };
 
     setFormData(data);
