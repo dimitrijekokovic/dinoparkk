@@ -39,7 +39,9 @@ const Navbar = () => {
     { nameSr: "Kontakt", nameEn: "Contact", href: "/#contact" },
     { nameSr: "Galerija", nameEn: "Gallery", href: "/gallery" },
     { nameSr: "Aktivnosti", nameEn: "Activities", href: "/#activities" },
+    { nameSr: "Cenovnik", nameEn: "Pricing", href: "/#pricing" }, // ✅ NOVO
   ];
+  
 
   return (
     <header

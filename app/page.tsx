@@ -3,6 +3,7 @@ import About from "./components/About";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Activities from "./components/Activities";
+import Pricing from "./components/Pricing"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Contact />
       <Gallery />
       <Activities />
+      <Pricing />
     </main>
   );
 }
