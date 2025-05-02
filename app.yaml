@@ -1,8 +1,8 @@
-env: standard
 runtime: nodejs20
-service: default
+instance_class: F1
+env_variables:
+  NODE_ENV: 'production'
 
 handlers:
-    - url: /.*
-      secure: always
-      script: auto
+  - url: /.*
+    script: auto

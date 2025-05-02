@@ -45,7 +45,7 @@ const Pricing = () => {
               {language === "sr" ? "Cene sadržaja" : "Attraction Prices"}
             </h3>
             <ul className="text-lg space-y-2 text-gray-300">
-              <li>{language === "sr" ? "Jahanje konja – 300,00 din." : "Horse Riding – 300 RSD"}</li>
+              <li>{language === "sr" ? "Jahanje konja – 500,00 din." : "Horse Riding – 500 RSD"}</li>
               <li>{language === "sr" ? "Vožnja kvadom – 400,00 din. (10 minuta)" : "Quad Ride – 400 RSD (10 min)"}</li>
               <li>{language === "sr" ? "Trambolina – 200,00 din. (5 minuta)" : "Trampoline – 200 RSD (5 min)"}</li>
               <li>{language === "sr" ? "Golf – 100,00 din. po štapu (30 min)" : "Mini Golf – 100 RSD per club (30 min)"}</li>
