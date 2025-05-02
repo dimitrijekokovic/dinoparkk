@@ -25,17 +25,17 @@ const Pricing = () => {
               {language === "sr" ? "Cene ulaznica" : "Ticket Prices"}
             </h3>
             <ul className="text-lg space-y-2 text-gray-300">
-              <li>{language === "sr" ? "Odrasli – 1.300,00 dinara" : "Adults – 1,300 RSD"}</li>
-              <li>{language === "sr" ? "Deca od 3 do 16 godina – 800,00 dinara" : "Children (3–16 yrs) – 800 RSD"}</li>
               <li>{language === "sr" ? "Deca do 3 godine – besplatno" : "Children under 3 – Free"}</li>
-              <li>{language === "sr" ? "1 odrasla osoba + 1 dete – 1.800,00 dinara" : "1 Adult + 1 Child – 1,800 RSD"}</li>
-              <li>{language === "sr" ? "1 odrasla osoba + 2 deteta – 2.200,00 dinara" : "1 Adult + 2 Children – 2,200 RSD"}</li>
-              <li>{language === "sr" ? "2 odrasle osobe + 1 dete – 2.700,00 dinara" : "2 Adults + 1 Child – 2,700 RSD"}</li>
-              <li>{language === "sr" ? "2 odrasle osobe + 2 deteta – 2.900,00 dinara" : "2 Adults + 2 Children – 2,900 RSD"}</li>
-              <li>{language === "sr" ? "2 odrasle osobe + 3 deteta – 3.200,00 dinara" : "2 Adults + 3 Children – 3,200 RSD"}</li>
+              <li>{language === "sr" ? "Deca od 3 do 16 godina – 800,00 dinara" : "Children (3–16 yrs) – 800 RSD"}</li>
+              <li>{language === "sr" ? "Odrasli – 1.400,00 dinara" : "Adults – 1,400 RSD"}</li>
+              <li>{language === "sr" ? "1 odrasla osoba + 1 dete – 1.900,00 dinara" : "1 Adult + 1 Child – 1,900 RSD"}</li>
+              <li>{language === "sr" ? "1 odrasla osoba + 2 deteta – 2.300,00 dinara" : "1 Adult + 2 Children – 2,300 RSD"}</li>
+              <li>{language === "sr" ? "2 odrasle osobe + 1 dete – 2.900,00 dinara" : "2 Adults + 1 Child – 2,900 RSD"}</li>
+              <li>{language === "sr" ? "2 odrasle osobe + 2 deteta – 2.990,00 dinara" : "2 Adults + 2 Children – 2,990 RSD"}</li>
+              <li>{language === "sr" ? "2 odrasle osobe + 3 deteta – 3.300,00 dinara" : "2 Adults + 3 Children – 3,300 RSD"}</li>
               <li>{language === "sr" ? "Penzioneri – 800,00 dinara" : "Seniors – 800 RSD"}</li>
-              <li>{language === "sr" ? "Dečije grupe (20+) osnovni paket – 500,00 dinara" : "Children Groups (20+) Basic – 500 RSD"}</li>
-              <li>{language === "sr" ? "Dečije grupe (20+) paket + sadržaji – 600,00 dinara" : "Children Groups (20+) w/ Attractions – 600 RSD"}</li>
+              <li>{language === "sr" ? "Grupa dece (20+) do 7 godina – 500,00 dinara" : "Group of children (20+) up to 7 years – 500 RSD"}</li>
+              <li>{language === "sr" ? "Grupa dece (20+) od 7 do 18 godina – 500,00 dinara" : "Group of children (20+) from 7 to 18 years – 500 RSD"}</li>
             </ul>
           </div>
 
