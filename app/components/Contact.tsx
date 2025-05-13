@@ -102,7 +102,11 @@ const Contact = () => {
             </li>
             <li className="flex items-center space-x-3">
               <FontAwesomeIcon icon={faPhone} className="text-green-400 text-2xl" />
-              <span>+381 31 640901</span>
+              <span>+381 63 115 5825</span>
+            </li>
+            <li className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faPhone} className="text-green-400 text-2xl" />
+            <span>+381 (0)31 640 901</span>
             </li>
             <li className="flex items-center space-x-3">
               <FontAwesomeIcon icon={faEnvelope} className="text-green-400 text-2xl" />

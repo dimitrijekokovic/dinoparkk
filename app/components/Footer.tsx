@@ -77,7 +77,12 @@ const Footer = () => {
                 icon={faPhone}
                 className="text-green-400 text-lg"
               />
-              <span>+381 60 123 4567</span>
+              <span>+381 63 115 5825</span>
+              <FontAwesomeIcon
+                icon={faPhone}
+                className="text-green-400 text-lg"
+              />
+              <span>+381 (0)31 640 901</span>
             </li>
             <li className="flex items-center space-x-3">
               <FontAwesomeIcon
