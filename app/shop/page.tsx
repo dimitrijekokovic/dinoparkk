@@ -36,11 +36,11 @@ const ShopPage = () => {
         </div>
 
         {/* Lista proizvoda */}
-        <ProductList
+        {/* <ProductList
           page={currentPage}
           onPageChange={setCurrentPage}
           query={query}
-        />
+        /> */}
       </div>
 
       <CartIcon />
