@@ -14,6 +14,7 @@ import {
   faFacebook,
   faInstagram,
   faYoutube,
+  faTiktok
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
@@ -108,6 +109,10 @@ const Footer = () => {
                 icon: faYoutube,
                 url: "https://www.youtube.com/@dinoparkzlatibor2324",
               },
+              {
+                icon: faTiktok,
+                url: "https://www.tiktok.com/@dinoparkzlatibor?is_from_webapp=1&sender_device=pc",
+              }
             ].map((social, index) => (
               <Link key={index} href={social.url} target="_blank">
                 <FontAwesomeIcon
