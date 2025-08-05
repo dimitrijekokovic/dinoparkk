@@ -35,7 +35,7 @@ const Navbar = () => {
 
   const links = [
     { nameSr: "Početna", nameEn: "Home", href: "/#home" },
-    { nameSr: "Shop", nameEn: "Shop", href: "/shop" },
+    { nameSr: "Shop", nameEn: "Shop", href: "/pricing" },
     { nameSr: "Kontakt", nameEn: "Contact", href: "/#contact" },
     { nameSr: "Galerija", nameEn: "Gallery", href: "/gallery" },
     { nameSr: "Aktivnosti", nameEn: "Activities", href: "/#activities" },
