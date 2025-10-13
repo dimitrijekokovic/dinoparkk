@@ -80,13 +80,13 @@ const Pricing = () => {
               </li>
               <li>
                 {language === "sr"
-                  ? "Grupa dece (20+) do 7 godina – 500,00 dinara"
-                  : "Group of children (20+) up to 7 years – 500 RSD"}
+                  ? "Grupa dece (20+) do 6 godina – 500,00 dinara"
+                  : "Group of children (20+) up to 6 years – 500 RSD"}
               </li>
               <li>
                 {language === "sr"
-                  ? "Grupa dece (20+) od 7 do 18 godina – 500,00 dinara"
-                  : "Group of children (20+) from 7 to 18 years – 500 RSD"}
+                  ? "Grupa dece (20+) od 7 do 16 godina – 600,00 dinara"
+                  : "Group of children (20+) from 7 to 16 years – 600 RSD"}
               </li>
             </ul>
           </div>
