@@ -15,3 +15,15 @@
 
 # Node.js dependencies:
 node_modules/
+
+# Next.js build output (rebuilt on server via gcp-build script)
+.next/
+
+# Local history / IDE
+.history/
+.vscode/
+
+# Env files (set env in app.yaml or Secret Manager instead)
+.env
+.env.local
+.env.*.local
