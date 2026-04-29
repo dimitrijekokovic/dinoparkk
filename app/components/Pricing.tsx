@@ -45,38 +45,38 @@ const Pricing = () => {
               </li>
               <li>
                 {language === "sr"
-                  ? "Odrasli – 1.400,00 dinara"
-                  : "Adults – 1,400 RSD"}
+                  ? "Odrasli – 1.500,00 dinara"
+                  : "Adults – 1,500 RSD"}
               </li>
               <li>
                 {language === "sr"
-                  ? "1 odrasla osoba + 1 dete – 1.900,00 dinara"
-                  : "1 Adult + 1 Child – 1,900 RSD"}
+                  ? "1 odrasla osoba + 1 dete – 2.000,00 dinara"
+                  : "1 Adult + 1 Child – 2,000 RSD"}
               </li>
               <li>
                 {language === "sr"
-                  ? "1 odrasla osoba + 2 deteta – 2.300,00 dinara"
-                  : "1 Adult + 2 Children – 2,300 RSD"}
+                  ? "1 odrasla osoba + 2 deteta – 2.500,00 dinara"
+                  : "1 Adult + 2 Children – 2,500 RSD"}
               </li>
               <li>
                 {language === "sr"
-                  ? "2 odrasle osobe + 1 dete – 2.900,00 dinara"
-                  : "2 Adults + 1 Child – 2,900 RSD"}
+                  ? "2 odrasle osobe + 1 dete – 3.200,00 dinara"
+                  : "2 Adults + 1 Child – 3,200 RSD"}
               </li>
               <li>
                 {language === "sr"
-                  ? "2 odrasle osobe + 2 deteta – 2.990,00 dinara"
-                  : "2 Adults + 2 Children – 2,990 RSD"}
+                  ? "2 odrasle osobe + 2 deteta – 3.300,00 dinara"
+                  : "2 Adults + 2 Children – 3,300 RSD"}
               </li>
               <li>
                 {language === "sr"
-                  ? "2 odrasle osobe + 3 deteta – 3.300,00 dinara"
-                  : "2 Adults + 3 Children – 3,300 RSD"}
+                  ? "2 odrasle osobe + 3 deteta – 3.500,00 dinara"
+                  : "2 Adults + 3 Children – 3,500 RSD"}
               </li>
               <li>
                 {language === "sr"
-                  ? "Penzioneri – 800,00 dinara"
-                  : "Seniors – 800 RSD"}
+                  ? "Penzioneri – 1.000,00 dinara"
+                  : "Seniors – 1,000 RSD"}
               </li>
               <li>
                 {language === "sr"
