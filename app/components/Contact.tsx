@@ -110,7 +110,7 @@ const Contact = () => {
             </li>
             <li className="flex items-center space-x-3">
               <FontAwesomeIcon icon={faEnvelope} className="text-green-400 text-2xl" />
-              <span>info@dinopark.rs</span>
+              <span>dinoparkoffice@gmail.com</span>
             </li>
 
             {/* Prikaz radnog vremena */}

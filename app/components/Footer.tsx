@@ -90,7 +90,7 @@ const Footer = () => {
                 icon={faEnvelope}
                 className="text-green-400 text-lg"
               />
-              <span>info@dinopark.rs</span>
+              <span>dinoparkoffice@gmail.com</span>
             </li>
           </ul>
 
