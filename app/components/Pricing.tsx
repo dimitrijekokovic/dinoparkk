@@ -33,61 +33,22 @@ const Pricing = () => {
 
             
             <ul className="text-lg space-y-2 text-gray-300">
-              <li>
-                {language === "sr"
-                  ? "Deca do 3 godine – besplatno"
-                  : "Children under 3 – Free"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "Deca od 3 do 16 godina – 800,00 dinara"
-                  : "Children (3–16 yrs) – 800 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "Odrasli – 1.500,00 dinara"
-                  : "Adults – 1,500 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "1 odrasla osoba + 1 dete – 2.000,00 dinara"
-                  : "1 Adult + 1 Child – 2,000 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "1 odrasla osoba + 2 deteta – 2.500,00 dinara"
-                  : "1 Adult + 2 Children – 2,500 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "2 odrasle osobe + 1 dete – 3.200,00 dinara"
-                  : "2 Adults + 1 Child – 3,200 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "2 odrasle osobe + 2 deteta – 3.300,00 dinara"
-                  : "2 Adults + 2 Children – 3,300 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "2 odrasle osobe + 3 deteta – 3.500,00 dinara"
-                  : "2 Adults + 3 Children – 3,500 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "Penzioneri – 1.000,00 dinara"
-                  : "Seniors – 1,000 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "Grupa dece (20+) do 6 godina – 500,00 dinara"
-                  : "Group of children (20+) up to 6 years – 500 RSD"}
-              </li>
-              <li>
-                {language === "sr"
-                  ? "Grupa dece (20+) od 7 do 16 godina – 600,00 dinara"
-                  : "Group of children (20+) from 7 to 16 years – 600 RSD"}
-              </li>
+              {[
+                ["Deca do 3 godine – besplatno", "Children under 3 – Free"],
+                ["Deca od 3 do 16 godina – 1.000,00 dinara", "Children (3–16 yrs) – 1,000 RSD"],
+                ["Odrasli – 1.700,00 dinara", "Adults – 1,700 RSD"],
+                ["1 odrasla osoba + 1 dete – 2.500,00 dinara", "1 Adult + 1 Child – 2,500 RSD"],
+                ["1 odrasla osoba + 2 deteta – 3.200,00 dinara", "1 Adult + 2 Children – 3,200 RSD"],
+                ["2 odrasle osobe + 1 dete – 3.600,00 dinara", "2 Adults + 1 Child – 3,600 RSD"],
+                ["2 odrasle osobe + 2 deteta – 4.000,00 dinara", "2 Adults + 2 Children – 4,000 RSD"],
+                ["2 odrasle osobe + 3 deteta – 4.300,00 dinara", "2 Adults + 3 Children – 4,300 RSD"],
+                ["2 odrasle osobe sa decom do 3 godine – 3.000,00 dinara", "2 Adults with children under 3 – 3,000 RSD"],
+                ["Penzioneri – 1.000,00 dinara", "Seniors – 1,000 RSD"],
+                ["Ekskurzije – deca uzrasta do 7 godina (više od 20 dece) – 700,00 dinara", "School trips – children up to 7 years (more than 20 children) – 700 RSD"],
+                ["Ekskurzije – deca uzrasta iznad 7 godina (više od 20 dece) – 900,00 dinara", "School trips – children over 7 years (more than 20 children) – 900 RSD"],
+              ].map(([sr, en]) => (
+                <li key={sr}>{language === "sr" ? sr : en}</li>
+              ))}
             </ul>
           </div>
 
